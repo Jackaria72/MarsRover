@@ -1,4 +1,4 @@
-package org.marsRover.logic;
+package org.marsRover.input;
 
 public class PlateauSize {
     private int xLength;

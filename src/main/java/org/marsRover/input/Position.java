@@ -1,4 +1,4 @@
-package org.marsRover.logic;
+package org.marsRover.input;
 
 public class Position {
     private int x;
