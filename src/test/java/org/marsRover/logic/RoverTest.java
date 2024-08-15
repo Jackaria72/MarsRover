@@ -14,14 +14,25 @@ class RoverTest {
 
     @Test
     void testRotateL() {
-        Rover curiosity = new Rover();
-        Position testStart = new Position(5,5, Direction.N);
+        Rover curiosity = new Rover(new Position(5,5, Direction.N));
 
-        Position result1 = curiosity.rotateL(testStart);
-        String r1 = result1.getFacing().toString();
+        curiosity.rotateL(curiosity.getCurrentPosition());
+        Direction result1 = curiosity.getCurrentPosition().getFacing();
 
-        String expected1 = Direction.W.name();
-        assertEquals(expected1,result1);
+        curiosity.rotateL(curiosity.getCurrentPosition());
+        Direction result2 = curiosity.getCurrentPosition().getFacing();
+
+        curiosity.rotateL(curiosity.getCurrentPosition());
+        Direction result3 = curiosity.getCurrentPosition().getFacing();
+
+        curiosity.rotateL(curiosity.getCurrentPosition());
+        Direction result4 = curiosity.getCurrentPosition().getFacing();
+
+        assertEquals(Direction.W,result1);
+        assertEquals(Direction.S,result2);
+        assertEquals(Direction.E,result3);
+        assertEquals(Direction.N,result4);
+
     }
 
     @Test
