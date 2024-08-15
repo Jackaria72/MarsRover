@@ -7,7 +7,11 @@ import org.marsRover.input.Position;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RoverTest {
-
+        /*TODO: test ideas:
+                           -: Setting up a Rover: does it have correct x,y,facing values
+                           -: Combination of move and rotates: does it get to end location?
+                           -: refactor rotateL and rotateR to match move possibly do before thing to set up rovers
+         */
 //    @Test
 //    void move() {
 //    }
