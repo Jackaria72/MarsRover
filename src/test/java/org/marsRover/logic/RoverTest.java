@@ -58,6 +58,28 @@ class RoverTest {
     }
 
     @Test
-    void moveForwards() {
+    void testMoveForwards() {
+        Rover curiosityN = new Rover(new Position(5,5, Direction.N));
+        Rover curiosityS = new Rover(new Position(5,5,Direction.S));
+        Rover curiosityE = new Rover(new Position(5,5,Direction.E));
+        Rover curiosityW = new Rover(new Position(5,5,Direction.W));
+
+        curiosityN.moveForwards(curiosityN.getCurrentPosition());
+        curiosityS.moveForwards(curiosityS.getCurrentPosition());
+        curiosityE.moveForwards(curiosityE.getCurrentPosition());
+        curiosityW.moveForwards(curiosityW.getCurrentPosition());
+
+
+        int resultCN = curiosityN.getCurrentPosition().getX();
+        int resultCS = curiosityS.getCurrentPosition().getX();
+        int resultCE = curiosityE.getCurrentPosition().getY();
+        int resultCW = curiosityW.getCurrentPosition().getY();
+
+        assertAll(
+                () -> assertEquals(6,resultCN),
+                () -> assertEquals(4,resultCS),
+                () -> assertEquals(6,resultCE),
+                () -> assertEquals(4,resultCW)
+        );
     }
 }
