@@ -36,7 +36,25 @@ class RoverTest {
     }
 
     @Test
-    void rotateR() {
+    void testRotateR() {
+        Rover curiosity = new Rover(new Position(5,5, Direction.N));
+
+        curiosity.rotateR(curiosity.getCurrentPosition());
+        Direction result1 = curiosity.getCurrentPosition().getFacing();
+
+        curiosity.rotateR(curiosity.getCurrentPosition());
+        Direction result2 = curiosity.getCurrentPosition().getFacing();
+
+        curiosity.rotateR(curiosity.getCurrentPosition());
+        Direction result3 = curiosity.getCurrentPosition().getFacing();
+
+        curiosity.rotateR(curiosity.getCurrentPosition());
+        Direction result4 = curiosity.getCurrentPosition().getFacing();
+
+        assertEquals(Direction.E,result1);
+        assertEquals(Direction.S,result2);
+        assertEquals(Direction.W,result3);
+        assertEquals(Direction.N,result4);
     }
 
     @Test
