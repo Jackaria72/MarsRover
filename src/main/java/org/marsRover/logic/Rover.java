@@ -11,6 +11,10 @@ public class Rover {
         this.currentPosition = currentPosition;
     }
 
+    public Position getCurrentPosition() {
+        return currentPosition;
+    }
+
     //TODO: Consider refactoring this because it is some messy code
     //How are we going to pass this data?
     // currently instructions are an array,
