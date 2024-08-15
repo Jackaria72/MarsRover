@@ -70,24 +70,24 @@ public class Rover {
     }
     public void rotateR(Position startPosition) {
         if (startPosition.getFacing() == Direction.N) {
-            currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.E);
+            currentPosition.setFacing(Direction.E);
         } else if (startPosition.getFacing() == Direction.E) {
-            currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.S);
+            currentPosition.setFacing(Direction.S);
         } else if (startPosition.getFacing() == Direction.S) {
-            currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.W);
+            currentPosition.setFacing(Direction.W);
         } else if (startPosition.getFacing() == Direction.W) {
-            currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.N);
+            currentPosition.setFacing(Direction.N);
         }
     }
     public void moveForwards(Position startPosition) {
         if (startPosition.getFacing() == Direction.N) {
-            currentPosition = new Position(currentPosition.getX() + 1, currentPosition.getY(), currentPosition.getFacing());
+            currentPosition.setX(currentPosition.getX()+1);
         } else if (startPosition.getFacing() == Direction.E) {
-            currentPosition = new Position(currentPosition.getX(), currentPosition.getY() + 1, currentPosition.getFacing());
+            currentPosition.setY(currentPosition.getY()+1);
         } else if (startPosition.getFacing() == Direction.S) {
-            currentPosition = new Position(currentPosition.getX() - 1, currentPosition.getY(), currentPosition.getFacing());
+            currentPosition.setX(currentPosition.getX()-1);
         } else if (startPosition.getFacing() == Direction.W) {
-            currentPosition = new Position(currentPosition.getX(), currentPosition.getY() - 1, currentPosition.getFacing());
+            currentPosition.setY(currentPosition.getY()-1);
         }
     }
 }
