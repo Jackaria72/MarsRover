@@ -7,6 +7,10 @@ import org.marsRover.input.Position;
 public class Rover {
     private Position currentPosition;
 
+    public Rover(Position currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
     //TODO: Consider refactoring this because it is some messy code
     //How are we going to pass this data?
     // currently instructions are an array,
@@ -47,18 +51,18 @@ public class Rover {
 //            }
 //        }
 //    }
-    public Position rotateL(Position startPosition) {
-        Position pos = startPosition;
+    public void rotateL(Position startPosition) {
+
         if (startPosition.getFacing() == Direction.N) {
-            pos.setFacing(Direction.W);
+             currentPosition.setFacing(Direction.W);
         } else if (startPosition.getFacing() == Direction.W) {
-            pos.setFacing(Direction.S);
+            currentPosition.setFacing(Direction.S);
         } else if (startPosition.getFacing() == Direction.S) {
-            pos.setFacing(Direction.E);
+            currentPosition.setFacing(Direction.E);
         } else if (startPosition.getFacing() == Direction.E) {
-            pos.setFacing(Direction.N);
+            currentPosition.setFacing(Direction.N);
         }
-        return pos;
+
     }
     public void rotateR(Position startPosition) {
         if (startPosition.getFacing() == Direction.N) {
