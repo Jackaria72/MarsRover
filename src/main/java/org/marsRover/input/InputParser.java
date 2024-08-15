@@ -14,6 +14,9 @@ public class InputParser {
                     parsed.add(Instruction.R);
                 } else if ((inputArray[i] == 'm') || (inputArray[i] == 'M')) {
                     parsed.add(Instruction.M);
+                } else {
+                    //Works for now to not accept invalid inputs, however this will end the program not ideal
+                    throw new RuntimeException("Your Input contained invalid characters, please try again");
                 }
 
             }
