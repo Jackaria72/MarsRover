@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RoverTest {
         /*TODO: test ideas:
                            -: Combination of move and rotates: does it get to end location?
-                           -: refactor rotateL and rotateR to match move possibly do before thing to set up rovers
+                           
          */
     @Test
     void testRoverInit() {
@@ -28,47 +28,51 @@ class RoverTest {
 
     @Test
     void testRotateL() {
-        Rover curiosity = new Rover(new Position(5,5, Direction.N));
+        Rover curiosityN = new Rover(new Position(5,5, Direction.N));
+        Rover curiosityS = new Rover(new Position(5,5,Direction.S));
+        Rover curiosityE = new Rover(new Position(5,5,Direction.E));
+        Rover curiosityW = new Rover(new Position(5,5,Direction.W));
 
-        curiosity.rotateL(curiosity.getCurrentPosition());
-        Direction result1 = curiosity.getCurrentPosition().getFacing();
+        curiosityN.rotateL(curiosityN.getCurrentPosition());
+        curiosityS.rotateL(curiosityS.getCurrentPosition());
+        curiosityE.rotateL(curiosityE.getCurrentPosition());
+        curiosityW.rotateL(curiosityW.getCurrentPosition());
 
-        curiosity.rotateL(curiosity.getCurrentPosition());
-        Direction result2 = curiosity.getCurrentPosition().getFacing();
 
-        curiosity.rotateL(curiosity.getCurrentPosition());
-        Direction result3 = curiosity.getCurrentPosition().getFacing();
+        Direction resultCN = curiosityN.getCurrentPosition().getFacing();
+        Direction resultCS = curiosityS.getCurrentPosition().getFacing();
+        Direction resultCE = curiosityE.getCurrentPosition().getFacing();
+        Direction resultCW = curiosityW.getCurrentPosition().getFacing();
 
-        curiosity.rotateL(curiosity.getCurrentPosition());
-        Direction result4 = curiosity.getCurrentPosition().getFacing();
-
-        assertEquals(Direction.W,result1);
-        assertEquals(Direction.S,result2);
-        assertEquals(Direction.E,result3);
-        assertEquals(Direction.N,result4);
+        assertEquals(Direction.W,resultCN);
+        assertEquals(Direction.E,resultCS);
+        assertEquals(Direction.N,resultCE);
+        assertEquals(Direction.S,resultCW);
 
     }
 
     @Test
     void testRotateR() {
-        Rover curiosity = new Rover(new Position(5,5, Direction.N));
+        Rover curiosityN = new Rover(new Position(5,5, Direction.N));
+        Rover curiosityS = new Rover(new Position(5,5,Direction.S));
+        Rover curiosityE = new Rover(new Position(5,5,Direction.E));
+        Rover curiosityW = new Rover(new Position(5,5,Direction.W));
 
-        curiosity.rotateR(curiosity.getCurrentPosition());
-        Direction result1 = curiosity.getCurrentPosition().getFacing();
+        curiosityN.rotateR(curiosityN.getCurrentPosition());
+        curiosityS.rotateR(curiosityS.getCurrentPosition());
+        curiosityE.rotateR(curiosityE.getCurrentPosition());
+        curiosityW.rotateR(curiosityW.getCurrentPosition());
 
-        curiosity.rotateR(curiosity.getCurrentPosition());
-        Direction result2 = curiosity.getCurrentPosition().getFacing();
 
-        curiosity.rotateR(curiosity.getCurrentPosition());
-        Direction result3 = curiosity.getCurrentPosition().getFacing();
+        Direction resultCN = curiosityN.getCurrentPosition().getFacing();
+        Direction resultCS = curiosityS.getCurrentPosition().getFacing();
+        Direction resultCE = curiosityE.getCurrentPosition().getFacing();
+        Direction resultCW = curiosityW.getCurrentPosition().getFacing();
 
-        curiosity.rotateR(curiosity.getCurrentPosition());
-        Direction result4 = curiosity.getCurrentPosition().getFacing();
-
-        assertEquals(Direction.E,result1);
-        assertEquals(Direction.S,result2);
-        assertEquals(Direction.W,result3);
-        assertEquals(Direction.N,result4);
+        assertEquals(Direction.E,resultCN);
+        assertEquals(Direction.W,resultCS);
+        assertEquals(Direction.S,resultCE);
+        assertEquals(Direction.N,resultCW);
     }
 
     @Test
