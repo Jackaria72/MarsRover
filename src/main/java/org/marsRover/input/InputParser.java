@@ -32,31 +32,7 @@ public class InputParser {
     //Needs Direction for Rover, what kind of list could take both and be typesafe?
     //Also Needs to convert string input to int
     //TODO: refactor this so it can output a position instead
-    public ArrayList<Object> initParser(String input) {
-        ArrayList<Object> output = new ArrayList<>();
-        String[] inputArray = input.toUpperCase().split(" ");
-        for (String in :inputArray) {
-            switch (in){
-                case "N":
-                    output.add(Direction.N);
-                    break;
-                case "E":
-                    output.add(Direction.E);
-                    break;
-                case "S":
-                    output.add(Direction.S);
-                    break;
-                case "W":
-                    output.add(Direction.W);
-                    break;
-                default:
-                    if (in.matches("\\d+")) {
-                        output.add(Integer.valueOf(in));
-                    }
-            }
-        }
-        return output;
-    }
+
     public Position initParser2(String input) {
         ArrayList<Integer> num = new ArrayList<>();
         //TODO: check if input list is longer than 3
@@ -89,4 +65,32 @@ public class InputParser {
         return new Position(x,y,facing);
     }
 
+
+
+
+//    public ArrayList<Object> initParser(String input) {
+//        ArrayList<Object> output = new ArrayList<>();
+//        String[] inputArray = input.toUpperCase().split(" ");
+//        for (String in :inputArray) {
+//            switch (in){
+//                case "N":
+//                    output.add(Direction.N);
+//                    break;
+//                case "E":
+//                    output.add(Direction.E);
+//                    break;
+//                case "S":
+//                    output.add(Direction.S);
+//                    break;
+//                case "W":
+//                    output.add(Direction.W);
+//                    break;
+//                default:
+//                    if (in.matches("\\d+")) {
+//                        output.add(Integer.valueOf(in));
+//                    }
+//            }
+//        }
+//        return output;
+//    }
 }

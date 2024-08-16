@@ -12,7 +12,7 @@ public class Main {
     TODO: add a method to pass parsed input Instructions to the Rover
             (loop through and call appropriate method)
 
-    TODO: Fix or Implement separate parser to handle numeric inputs for Plat and Rov Init
+    TODO: Implement separate parser to handle numeric inputs for Plat Init
 
     TODO: Maybe implement a regex to remove unwanted characters in input (i.e. commas, spaces)
             currently unneeded as it ONLY cares about the Instruction Values

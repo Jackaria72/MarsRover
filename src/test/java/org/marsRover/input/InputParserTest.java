@@ -60,54 +60,82 @@ class InputParserTest {
                 () -> assertEquals(expected3, test3)
         );
     }
+//
     @Test
-    void testInitParseSingleIn() {
+    void testRoverInitParse() {
         InputParser testParser = new InputParser();
 
-        ArrayList<Object> expectedN = new ArrayList<>(List.of(Direction.N));
-        ArrayList<Object> expectedE = new ArrayList<>(List.of(Direction.E));
-        ArrayList<Object> expectedS = new ArrayList<>(List.of(Direction.S));
-        ArrayList<Object> expectedW = new ArrayList<>(List.of(Direction.W));
-        ArrayList<Object> expected1D = new ArrayList<>(List.of(2));
-        ArrayList<Object> expected2D = new ArrayList<>(List.of(13));
-
-        ArrayList<Object> resultN = testParser.initParser("n");
-        ArrayList<Object> resultS = testParser.initParser("S");
-        ArrayList<Object> resultE = testParser.initParser("e");
-        ArrayList<Object> resultW = testParser.initParser("W");
-        ArrayList<Object> result1D = testParser.initParser("2");
-        ArrayList<Object> result2D = testParser.initParser("13");
-
-        assertAll(
-                () -> assertEquals(expectedN,resultN),
-                () -> assertEquals(expectedE,resultE),
-                () -> assertEquals(expectedS,resultS),
-                () -> assertEquals(expectedW,resultW),
-                () -> assertEquals(expected1D,result1D),
-                () -> assertEquals(expected2D,result2D)
-        );
-    }
-    @Test
-    void testInitParseMultiIn() {
-        InputParser testParser = new InputParser();
-
-        ArrayList<Object> expected1 = new ArrayList<>(List.of(Direction.N, 2, 3));
-        ArrayList<Object> expected2 = new ArrayList<>(List.of(Direction.E, 13, 3));
-        ArrayList<Object> expected3 = new ArrayList<>(List.of(3, 4, Direction.S));
-        ArrayList<Object> expected4 = new ArrayList<>(List.of(3, Direction.W, 53));
+        String test1 = "3 3 n";
+        int test1x = 3;
+        int test1y = 3;
+        Direction test1F = Direction.N;
+        String test2 = "6 8 S";
+        int test2x = 6;
+        int test2y = 8;
+        Direction test2F = Direction.S;
+        String test3 = "13 8 E";
+        int test3x = 13;
+        int test3y = 8;
+        Direction test3F = Direction.E;
 
 
-        ArrayList<Object> result1 = testParser.initParser("n 2 3");
-        ArrayList<Object> result2 = testParser.initParser("e 13 3");
-        ArrayList<Object> result3 = testParser.initParser("3 4 s");
-        ArrayList<Object> result4 = testParser.initParser("3 W 53");
+        Position result1 = testParser.initParser2(test1);
+        int result1x = result1.getX();
+        int result1y = result1.getY();
+        Direction result1F = result1.getFacing();
+        Position result2 = testParser.initParser2(test2);
+        int result2x = result2.getX();
+        int result2y = result2.getY();
+        Direction result2F = result2.getFacing();
+        Position result3 = testParser.initParser2(test3);
+        int result3x = result3.getX();
+        int result3y = result3.getY();
+        Direction result3F = result3.getFacing();
 
 
         assertAll(
-                () -> assertEquals(expected1,result1),
-                () -> assertEquals(expected2,result2),
-                () -> assertEquals(expected3,result3),
-                () -> assertEquals(expected4,result4)
+                () -> assertEquals(test1x,result1x),
+                () -> assertEquals(test1y, result1y),
+                () -> assertEquals(test1F,result1F),
+
+                () -> assertEquals(test2x,result2x),
+                () -> assertEquals(test2y, result2y),
+                () -> assertEquals(test2F,result2F),
+
+                () -> assertEquals(test3x,result3x),
+                () -> assertEquals(test3y, result3y),
+                () -> assertEquals(test3F,result3F)
         );
     }
+
+
+
+
+//    @Test
+//    void testInitParseSingleIn() {
+//        InputParser testParser = new InputParser();
+//
+//        ArrayList<Object> expectedN = new ArrayList<>(List.of(Direction.N));
+//        ArrayList<Object> expectedE = new ArrayList<>(List.of(Direction.E));
+//        ArrayList<Object> expectedS = new ArrayList<>(List.of(Direction.S));
+//        ArrayList<Object> expectedW = new ArrayList<>(List.of(Direction.W));
+//        ArrayList<Object> expected1D = new ArrayList<>(List.of(2));
+//        ArrayList<Object> expected2D = new ArrayList<>(List.of(13));
+//
+//        ArrayList<Object> resultN = testParser.initParser("n");
+//        ArrayList<Object> resultS = testParser.initParser("S");
+//        ArrayList<Object> resultE = testParser.initParser("e");
+//        ArrayList<Object> resultW = testParser.initParser("W");
+//        ArrayList<Object> result1D = testParser.initParser("2");
+//        ArrayList<Object> result2D = testParser.initParser("13");
+//
+//        assertAll(
+//                () -> assertEquals(expectedN,resultN),
+//                () -> assertEquals(expectedE,resultE),
+//                () -> assertEquals(expectedS,resultS),
+//                () -> assertEquals(expectedW,resultW),
+//                () -> assertEquals(expected1D,result1D),
+//                () -> assertEquals(expected2D,result2D)
+//        );
+//    }
 }
