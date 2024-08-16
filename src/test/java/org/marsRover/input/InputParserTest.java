@@ -43,6 +43,7 @@ class InputParserTest {
     void testParser_MultiInputMixedCases() {
         //Arrange
         InputParser testParser = new InputParser();
+
         ArrayList<Instruction> expected1 = new ArrayList<>(List.of(Instruction.L, Instruction.L, Instruction.L));
         ArrayList<Instruction> expected2 = new ArrayList<>(List.of(Instruction.L,Instruction.R, Instruction.R, Instruction.F));
         ArrayList<Instruction> expected3 = new ArrayList<>(List.of(Instruction.F, Instruction.R, Instruction.L, Instruction.L, Instruction.R));
@@ -58,6 +59,34 @@ class InputParserTest {
                 () -> assertEquals(expected2, test2),
                 () -> assertEquals(expected3, test3)
         );
+    }
+    @Test
+    void testInitParse() {
+        InputParser testParser = new InputParser();
+
+        ArrayList<Object> expectedN = new ArrayList<>(List.of(Direction.N));
+        ArrayList<Object> expectedE = new ArrayList<>(List.of(Direction.E));
+        ArrayList<Object> expectedS = new ArrayList<>(List.of(Direction.S));
+        ArrayList<Object> expectedW = new ArrayList<>(List.of(Direction.W));
+        ArrayList<Object> expected1D = new ArrayList<>(List.of(2));
+        ArrayList<Object> expected2D = new ArrayList<>(List.of(13));
+
+        ArrayList<Object> resultN = testParser.initParser("n");
+        ArrayList<Object> resultS = testParser.initParser("S");
+        ArrayList<Object> resultE = testParser.initParser("e");
+        ArrayList<Object> resultW = testParser.initParser("W");
+        ArrayList<Object> result1D = testParser.initParser("2");
+        ArrayList<Object> result2D = testParser.initParser("13");
+
+        assertAll(
+                () -> assertEquals(expectedN,resultN),
+                () -> assertEquals(expectedE,resultE),
+                () -> assertEquals(expectedS,resultS),
+                () -> assertEquals(expectedW,resultW),
+                () -> assertEquals(expected1D,result1D),
+                () -> assertEquals(expected2D,result2D)
+        );
+
 
     }
 }
