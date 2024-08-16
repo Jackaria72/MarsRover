@@ -22,30 +22,53 @@ public class Rover {
     // Would using a for loop with if-statements calling individual methods be better?
     //
 
-    public void rotateL(Position startPosition) {
-
-        if (startPosition.getFacing() == Direction.N) {
-             currentPosition.setFacing(Direction.W);
-        } else if (startPosition.getFacing() == Direction.W) {
-            currentPosition.setFacing(Direction.S);
-        } else if (startPosition.getFacing() == Direction.S) {
-            currentPosition.setFacing(Direction.E);
-        } else if (startPosition.getFacing() == Direction.E) {
-            currentPosition.setFacing(Direction.N);
-        }
-
-    }
-    public void rotateR(Position startPosition) {
-        if (startPosition.getFacing() == Direction.N) {
-            currentPosition.setFacing(Direction.E);
-        } else if (startPosition.getFacing() == Direction.E) {
-            currentPosition.setFacing(Direction.S);
-        } else if (startPosition.getFacing() == Direction.S) {
-            currentPosition.setFacing(Direction.W);
-        } else if (startPosition.getFacing() == Direction.W) {
-            currentPosition.setFacing(Direction.N);
+    public void rotateL(Direction facing) {
+        switch (facing) {
+            case N -> currentPosition.setFacing(Direction.W);
+            case E -> currentPosition.setFacing(Direction.N);
+            case S -> currentPosition.setFacing(Direction.E);
+            case W-> currentPosition.setFacing(Direction.S);
         }
     }
+
+    public void rotateR(Direction facing) {
+        switch (facing) {
+            case N -> currentPosition.setFacing(Direction.E);
+            case E -> currentPosition.setFacing(Direction.S);
+            case S -> currentPosition.setFacing(Direction.W);
+            case W-> currentPosition.setFacing(Direction.N);
+        }
+    }
+
+//    public void moveF(Direction facing) {
+//        switch (facing) {
+//            case N -> currentPosition.setY(currentPosition.getY() + 1);
+//            case E -> currentPosition.setX(currentPosition.getX() + 1);
+//            case S -> currentPosition.setY(currentPosition.getY() - 1);
+//            case W -> currentPosition.setX(currentPosition.getX() - 1);
+//        }
+//    }
+    public Position moveFwd(Direction facing) {
+        switch (facing) {
+            case N -> {
+                return new Position(currentPosition.getX(), currentPosition.getY()+1, facing);
+            }
+            case S -> {
+                return new Position(currentPosition.getX(), currentPosition.getY()-1, facing);
+            }
+            case E -> {
+                return new Position(currentPosition.getX()+1, currentPosition.getY(), facing);
+            }
+            case W -> {
+                return new Position(currentPosition.getX()-1, currentPosition.getY(), facing);
+            }
+            default -> {
+                System.out.println("Cannot go this way");
+                return currentPosition;
+            }
+        }
+    }
+
 //    public void moveForwards(Position startPosition) {
 //        if (startPosition.getFacing() == Direction.N) {
 //            currentPosition.setY(currentPosition.getX()+1);
@@ -57,51 +80,5 @@ public class Rover {
 //            currentPosition.setX(currentPosition.getY()-1);
 //        }
 //    }
-    public void moveF(Direction facing) {
-        switch (facing) {
-            case N -> currentPosition.setY(currentPosition.getY() + 1);
-            case E -> currentPosition.setX(currentPosition.getX() + 1);
-            case S -> currentPosition.setY(currentPosition.getY() - 1);
-            case W -> currentPosition.setX(currentPosition.getX() - 1);
-        }
-    }
 
-
-
-
-            //Messy multi movement method, keeping for now just in case
-    //    public void move(Position startPosition, Instruction inst) {
-//        if (inst == Instruction.L) {
-//            if (startPosition.getFacing() == Direction.N) {
-//                currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.W);
-//            } else if (startPosition.getFacing() == Direction.W) {
-//                currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.S);
-//            } else if (startPosition.getFacing() == Direction.S) {
-//                currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.E);
-//            } else if (startPosition.getFacing() == Direction.E) {
-//                currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.N);
-//            }
-//        } else if (inst == Instruction.R) {
-//            if (startPosition.getFacing() == Direction.N) {
-//                currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.E);
-//            } else if (startPosition.getFacing() == Direction.E) {
-//                currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.S);
-//            } else if (startPosition.getFacing() == Direction.S) {
-//                currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.W);
-//            } else if (startPosition.getFacing() == Direction.W) {
-//                currentPosition = new Position(currentPosition.getX(), currentPosition.getY(), Direction.N);
-//            }
-//
-//        } else if (inst == Instruction.M) {
-//            if (startPosition.getFacing() == Direction.N) {
-//                currentPosition = new Position(currentPosition.getX() + 1, currentPosition.getY(), currentPosition.getFacing());
-//            } else if (startPosition.getFacing() == Direction.E) {
-//                currentPosition = new Position(currentPosition.getX(), currentPosition.getY() + 1, currentPosition.getFacing());
-//            } else if (startPosition.getFacing() == Direction.S) {
-//                currentPosition = new Position(currentPosition.getX() - 1, currentPosition.getY(), currentPosition.getFacing());
-//            } else if (startPosition.getFacing() == Direction.W) {
-//                currentPosition = new Position(currentPosition.getX(), currentPosition.getY() - 1, currentPosition.getFacing());
-//            }
-//        }
-//    }
 }

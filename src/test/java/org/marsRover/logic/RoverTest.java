@@ -33,10 +33,10 @@ class RoverTest {
         Rover curiosityE = new Rover(new Position(5,5,Direction.E));
         Rover curiosityW = new Rover(new Position(5,5,Direction.W));
 
-        curiosityN.rotateL(curiosityN.getCurrentPosition());
-        curiosityS.rotateL(curiosityS.getCurrentPosition());
-        curiosityE.rotateL(curiosityE.getCurrentPosition());
-        curiosityW.rotateL(curiosityW.getCurrentPosition());
+        curiosityN.rotateL(curiosityN.getCurrentPosition().getFacing());
+        curiosityS.rotateL(curiosityS.getCurrentPosition().getFacing());
+        curiosityE.rotateL(curiosityE.getCurrentPosition().getFacing());
+        curiosityW.rotateL(curiosityW.getCurrentPosition().getFacing());
 
 
         Direction resultCN = curiosityN.getCurrentPosition().getFacing();
@@ -58,10 +58,10 @@ class RoverTest {
         Rover curiosityE = new Rover(new Position(5,5,Direction.E));
         Rover curiosityW = new Rover(new Position(5,5,Direction.W));
 
-        curiosityN.rotateR(curiosityN.getCurrentPosition());
-        curiosityS.rotateR(curiosityS.getCurrentPosition());
-        curiosityE.rotateR(curiosityE.getCurrentPosition());
-        curiosityW.rotateR(curiosityW.getCurrentPosition());
+        curiosityN.rotateR(curiosityN.getCurrentPosition().getFacing());
+        curiosityS.rotateR(curiosityS.getCurrentPosition().getFacing());
+        curiosityE.rotateR(curiosityE.getCurrentPosition().getFacing());
+        curiosityW.rotateR(curiosityW.getCurrentPosition().getFacing());
 
 
         Direction resultCN = curiosityN.getCurrentPosition().getFacing();
@@ -75,54 +75,85 @@ class RoverTest {
         assertEquals(Direction.N,resultCW);
     }
 
-    @Test
-    void testMoveForwards() {
+
+    @Test void testForNewFwd() {
         Rover curiosityN = new Rover(new Position(5,5, Direction.N));
         Rover curiosityS = new Rover(new Position(5,5,Direction.S));
         Rover curiosityE = new Rover(new Position(5,5,Direction.E));
         Rover curiosityW = new Rover(new Position(5,5,Direction.W));
 
-        curiosityN.moveF(curiosityN.getCurrentPosition().getFacing());
-        curiosityS.moveF(curiosityS.getCurrentPosition().getFacing());
-        curiosityE.moveF(curiosityE.getCurrentPosition().getFacing());
-        curiosityW.moveF(curiosityW.getCurrentPosition().getFacing());
+        int expectedCN = 6;
+        int expectedCS = 4;
+        int expectedCE = 6;
+        int expectedCW = 4;
 
-
-        int resultCN = curiosityN.getCurrentPosition().getY();
-        int resultCS = curiosityS.getCurrentPosition().getY();
-        int resultCE = curiosityE.getCurrentPosition().getX();
-        int resultCW = curiosityW.getCurrentPosition().getX();
-
-        assertAll(
-                () -> assertEquals(6,resultCN),
-                () -> assertEquals(4,resultCS),
-                () -> assertEquals(6,resultCE),
-                () -> assertEquals(4,resultCW)
-        );
-    }
-    @Test
-    void testMoveForwardsNonMatchingXYPositions() {
-        Rover curiosityN = new Rover(new Position(3,7, Direction.N));
-        Rover curiosityS = new Rover(new Position(3,7,Direction.S));
-        Rover curiosityE = new Rover(new Position(3,7,Direction.E));
-        Rover curiosityW = new Rover(new Position(3,7,Direction.W));
-
-        curiosityN.moveF(curiosityN.getCurrentPosition().getFacing());
-        curiosityS.moveF(curiosityS.getCurrentPosition().getFacing());
-        curiosityE.moveF(curiosityE.getCurrentPosition().getFacing());
-        curiosityW.moveF(curiosityW.getCurrentPosition().getFacing());
-
-
-        int resultCN = curiosityN.getCurrentPosition().getY();
-        int resultCS = curiosityS.getCurrentPosition().getY();
-        int resultCE = curiosityE.getCurrentPosition().getX();
-        int resultCW = curiosityW.getCurrentPosition().getX();
+        Position posCN = curiosityN.moveFwd(curiosityN.getCurrentPosition().getFacing());
+        Position posCS = curiosityS.moveFwd(curiosityS.getCurrentPosition().getFacing());
+        Position posCE = curiosityE.moveFwd(curiosityE.getCurrentPosition().getFacing());
+        Position posCW = curiosityW.moveFwd(curiosityW.getCurrentPosition().getFacing());
 
         assertAll(
-                () -> assertEquals(8,resultCN),
-                () -> assertEquals(6,resultCS),
-                () -> assertEquals(4,resultCE),
-                () -> assertEquals(2,resultCW)
+                () -> assertEquals(expectedCN,posCN.getY()),
+                () -> assertEquals(expectedCS,posCS.getY()),
+                () -> assertEquals(expectedCE,posCE.getX()),
+                () -> assertEquals(expectedCW,posCW.getX())
         );
     }
+
+
+
+
+
+//    @Test
+//    void testMoveForwards() {
+//        Rover curiosityN = new Rover(new Position(5,5, Direction.N));
+//        Rover curiosityS = new Rover(new Position(5,5,Direction.S));
+//        Rover curiosityE = new Rover(new Position(5,5,Direction.E));
+//        Rover curiosityW = new Rover(new Position(5,5,Direction.W));
+//
+//        curiosityN.moveF(curiosityN.getCurrentPosition().getFacing());
+//        curiosityS.moveF(curiosityS.getCurrentPosition().getFacing());
+//        curiosityE.moveF(curiosityE.getCurrentPosition().getFacing());
+//        curiosityW.moveF(curiosityW.getCurrentPosition().getFacing());
+//
+//
+//        int resultCN = curiosityN.getCurrentPosition().getY();
+//        int resultCS = curiosityS.getCurrentPosition().getY();
+//        int resultCE = curiosityE.getCurrentPosition().getX();
+//        int resultCW = curiosityW.getCurrentPosition().getX();
+//
+//        assertAll(
+//                () -> assertEquals(6,resultCN),
+//                () -> assertEquals(4,resultCS),
+//                () -> assertEquals(6,resultCE),
+//                () -> assertEquals(4,resultCW)
+//        );
+//    }
+//    @Test
+//    void testMoveForwardsNonMatchingXYPositions() {
+//        Rover curiosityN = new Rover(new Position(3,7, Direction.N));
+//        Rover curiosityS = new Rover(new Position(3,7,Direction.S));
+//        Rover curiosityE = new Rover(new Position(3,7,Direction.E));
+//        Rover curiosityW = new Rover(new Position(3,7,Direction.W));
+//
+//        curiosityN.moveF(curiosityN.getCurrentPosition().getFacing());
+//        curiosityS.moveF(curiosityS.getCurrentPosition().getFacing());
+//        curiosityE.moveF(curiosityE.getCurrentPosition().getFacing());
+//        curiosityW.moveF(curiosityW.getCurrentPosition().getFacing());
+//
+//
+//
+//
+//        int resultCN = curiosityN.getCurrentPosition().getY();
+//        int resultCS = curiosityS.getCurrentPosition().getY();
+//        int resultCE = curiosityE.getCurrentPosition().getX();
+//        int resultCW = curiosityW.getCurrentPosition().getX();
+//
+//        assertAll(
+//                () -> assertEquals(8,resultCN),
+//                () -> assertEquals(6,resultCS),
+//                () -> assertEquals(4,resultCE),
+//                () -> assertEquals(2,resultCW)
+//        );
+//    }
 }
