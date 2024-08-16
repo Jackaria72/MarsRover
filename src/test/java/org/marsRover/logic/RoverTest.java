@@ -99,6 +99,29 @@ class RoverTest {
                 () -> assertEquals(expectedCW,posCW.getX())
         );
     }
+    @Test void testForBkw() {
+        Rover curiosityN = new Rover(new Position(5,5, Direction.N));
+        Rover curiosityS = new Rover(new Position(5,5,Direction.S));
+        Rover curiosityE = new Rover(new Position(5,5,Direction.E));
+        Rover curiosityW = new Rover(new Position(5,5,Direction.W));
+
+        int expectedCN = 4;
+        int expectedCS = 6;
+        int expectedCE = 4;
+        int expectedCW = 6;
+
+        Position posCN = curiosityN.moveBkw(curiosityN.getCurrentPosition().getFacing());
+        Position posCS = curiosityS.moveBkw(curiosityS.getCurrentPosition().getFacing());
+        Position posCE = curiosityE.moveBkw(curiosityE.getCurrentPosition().getFacing());
+        Position posCW = curiosityW.moveBkw(curiosityW.getCurrentPosition().getFacing());
+
+        assertAll(
+                () -> assertEquals(expectedCN,posCN.getY()),
+                () -> assertEquals(expectedCS,posCS.getY()),
+                () -> assertEquals(expectedCE,posCE.getX()),
+                () -> assertEquals(expectedCW,posCW.getX())
+        );
+    }
 
 
 
