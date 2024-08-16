@@ -68,6 +68,26 @@ public class Rover {
             }
         }
     }
+    public Position moveBkw(Direction facing) {
+        switch (facing) {
+            case N -> {
+                return new Position(currentPosition.getX(), currentPosition.getY()-1, facing);
+            }
+            case S -> {
+                return new Position(currentPosition.getX(), currentPosition.getY()+1, facing);
+            }
+            case E -> {
+                return new Position(currentPosition.getX()-1, currentPosition.getY(), facing);
+            }
+            case W -> {
+                return new Position(currentPosition.getX()+1, currentPosition.getY(), facing);
+            }
+            default -> {
+                System.out.println("Cannot go this way");
+                return currentPosition;
+            }
+        }
+    }
 
 //    public void moveForwards(Position startPosition) {
 //        if (startPosition.getFacing() == Direction.N) {

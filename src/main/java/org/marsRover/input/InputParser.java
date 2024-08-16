@@ -16,10 +16,12 @@ public class InputParser {
                 case 'R':
                     parsed.add(Instruction.R);
                     break;
-                case 'M':
-                    parsed.add(Instruction.M);
+                case 'F':
+                    parsed.add(Instruction.F);
                     break;
-
+                case 'B':
+                    parsed.add(Instruction.B);
+                    break;
             }
         }
         return parsed;
