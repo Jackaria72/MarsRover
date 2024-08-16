@@ -8,13 +8,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RoverTest {
         /*TODO: test ideas:
-                           -: Setting up a Rover: does it have correct x,y,facing values
                            -: Combination of move and rotates: does it get to end location?
                            -: refactor rotateL and rotateR to match move possibly do before thing to set up rovers
          */
-//    @Test
-//    void move() {
-//    }
+    @Test
+    void testRoverInit() {
+        Rover curiosity = new Rover(new Position(5,5,Direction.N));
+
+        int xResult = curiosity.getCurrentPosition().getX();
+        int yResult = curiosity.getCurrentPosition().getY();
+        Direction faceResult = curiosity.getCurrentPosition().getFacing();
+
+        assertAll(
+                () -> assertEquals(5,xResult),
+                () -> assertEquals(5,yResult),
+                () -> assertEquals(Direction.N,faceResult)
+        );
+    }
 
     @Test
     void testRotateL() {
