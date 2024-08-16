@@ -82,10 +82,10 @@ class RoverTest {
         Rover curiosityE = new Rover(new Position(5,5,Direction.E));
         Rover curiosityW = new Rover(new Position(5,5,Direction.W));
 
-        curiosityN.moveForwards(curiosityN.getCurrentPosition());
-        curiosityS.moveForwards(curiosityS.getCurrentPosition());
-        curiosityE.moveForwards(curiosityE.getCurrentPosition());
-        curiosityW.moveForwards(curiosityW.getCurrentPosition());
+        curiosityN.moveF(curiosityN.getCurrentPosition().getFacing());
+        curiosityS.moveF(curiosityS.getCurrentPosition().getFacing());
+        curiosityE.moveF(curiosityE.getCurrentPosition().getFacing());
+        curiosityW.moveF(curiosityW.getCurrentPosition().getFacing());
 
 
         int resultCN = curiosityN.getCurrentPosition().getY();
@@ -98,6 +98,31 @@ class RoverTest {
                 () -> assertEquals(4,resultCS),
                 () -> assertEquals(6,resultCE),
                 () -> assertEquals(4,resultCW)
+        );
+    }
+    @Test
+    void testMoveForwardsNonMatchingXYPositions() {
+        Rover curiosityN = new Rover(new Position(3,7, Direction.N));
+        Rover curiosityS = new Rover(new Position(3,7,Direction.S));
+        Rover curiosityE = new Rover(new Position(3,7,Direction.E));
+        Rover curiosityW = new Rover(new Position(3,7,Direction.W));
+
+        curiosityN.moveF(curiosityN.getCurrentPosition().getFacing());
+        curiosityS.moveF(curiosityS.getCurrentPosition().getFacing());
+        curiosityE.moveF(curiosityE.getCurrentPosition().getFacing());
+        curiosityW.moveF(curiosityW.getCurrentPosition().getFacing());
+
+
+        int resultCN = curiosityN.getCurrentPosition().getY();
+        int resultCS = curiosityS.getCurrentPosition().getY();
+        int resultCE = curiosityE.getCurrentPosition().getX();
+        int resultCW = curiosityW.getCurrentPosition().getX();
+
+        assertAll(
+                () -> assertEquals(8,resultCN),
+                () -> assertEquals(6,resultCS),
+                () -> assertEquals(4,resultCE),
+                () -> assertEquals(2,resultCW)
         );
     }
 }

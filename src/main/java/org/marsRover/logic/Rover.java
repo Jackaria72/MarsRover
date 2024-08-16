@@ -46,15 +46,23 @@ public class Rover {
             currentPosition.setFacing(Direction.N);
         }
     }
-    public void moveForwards(Position startPosition) {
-        if (startPosition.getFacing() == Direction.N) {
-            currentPosition.setY(currentPosition.getX()+1);
-        } else if (startPosition.getFacing() == Direction.E) {
-            currentPosition.setX(currentPosition.getY()+1);
-        } else if (startPosition.getFacing() == Direction.S) {
-            currentPosition.setY(currentPosition.getX()-1);
-        } else if (startPosition.getFacing() == Direction.W) {
-            currentPosition.setX(currentPosition.getY()-1);
+//    public void moveForwards(Position startPosition) {
+//        if (startPosition.getFacing() == Direction.N) {
+//            currentPosition.setY(currentPosition.getX()+1);
+//        } else if (startPosition.getFacing() == Direction.E) {
+//            currentPosition.setX(currentPosition.getY()+1);
+//        } else if (startPosition.getFacing() == Direction.S) {
+//            currentPosition.setY(currentPosition.getX()-1);
+//        } else if (startPosition.getFacing() == Direction.W) {
+//            currentPosition.setX(currentPosition.getY()-1);
+//        }
+//    }
+    public void moveF(Direction facing) {
+        switch (facing) {
+            case N -> currentPosition.setY(currentPosition.getY() + 1);
+            case E -> currentPosition.setX(currentPosition.getX() + 1);
+            case S -> currentPosition.setY(currentPosition.getY() - 1);
+            case W -> currentPosition.setX(currentPosition.getX() - 1);
         }
     }
 
