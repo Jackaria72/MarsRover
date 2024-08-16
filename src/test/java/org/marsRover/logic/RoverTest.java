@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RoverTest {
         /*TODO: test ideas:
                            -: Combination of move and rotates: does it get to end location?
-                           
+
          */
     @Test
     void testRoverInit() {
@@ -88,10 +88,10 @@ class RoverTest {
         curiosityW.moveForwards(curiosityW.getCurrentPosition());
 
 
-        int resultCN = curiosityN.getCurrentPosition().getX();
-        int resultCS = curiosityS.getCurrentPosition().getX();
-        int resultCE = curiosityE.getCurrentPosition().getY();
-        int resultCW = curiosityW.getCurrentPosition().getY();
+        int resultCN = curiosityN.getCurrentPosition().getY();
+        int resultCS = curiosityS.getCurrentPosition().getY();
+        int resultCE = curiosityE.getCurrentPosition().getX();
+        int resultCW = curiosityW.getCurrentPosition().getX();
 
         assertAll(
                 () -> assertEquals(6,resultCN),

@@ -48,13 +48,13 @@ public class Rover {
     }
     public void moveForwards(Position startPosition) {
         if (startPosition.getFacing() == Direction.N) {
-            currentPosition.setX(currentPosition.getX()+1);
+            currentPosition.setY(currentPosition.getX()+1);
         } else if (startPosition.getFacing() == Direction.E) {
-            currentPosition.setY(currentPosition.getY()+1);
+            currentPosition.setX(currentPosition.getY()+1);
         } else if (startPosition.getFacing() == Direction.S) {
-            currentPosition.setX(currentPosition.getX()-1);
+            currentPosition.setY(currentPosition.getX()-1);
         } else if (startPosition.getFacing() == Direction.W) {
-            currentPosition.setY(currentPosition.getY()-1);
+            currentPosition.setX(currentPosition.getY()-1);
         }
     }
 
