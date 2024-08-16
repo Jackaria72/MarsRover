@@ -6,6 +6,7 @@ public class InputParser {
     public ArrayList<Instruction> parser(String input) {
         char[] inputArray = input.toCharArray();
         ArrayList<Instruction> parsed = new ArrayList<>();
+// TODO: Refactor this to switch-case, Does this need to parse int values for Plateau and Rover creation?
 
             for (int i = 0; i < inputArray.length; i++) {
                 if ((inputArray[i] == 'l') || (inputArray[i] == 'L')) {
