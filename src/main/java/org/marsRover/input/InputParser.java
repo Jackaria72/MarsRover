@@ -31,6 +31,7 @@ public class InputParser {
     //INIT parser, Needs to take digits, use split to split by a regex?
     //Needs Direction for Rover, what kind of list could take both and be typesafe?
     //Also Needs to convert string input to int
+    //TODO: refactor this so it can output a position instead
     public ArrayList<Object> initParser(String input) {
         ArrayList<Object> output = new ArrayList<>();
         String[] inputArray = input.toUpperCase().split(" ");
@@ -55,6 +56,37 @@ public class InputParser {
             }
         }
         return output;
+    }
+    public Position initParser2(String input) {
+        ArrayList<Integer> num = new ArrayList<>();
+        //TODO: check if input list is longer than 3
+        //TODO: loop, see if 1st 2nd are Digits, set x, y accordingly, then 3rd is a directional letter, to set Direction
+        String[] inputArray = input.toUpperCase().split(" ");
+        if (inputArray.length != 3) {
+            System.out.println("Incorrect number of commands supplied");
+        }
+        if (!inputArray[0].matches("\\d+")) {
+            System.out.println("Illegal input pls try again");
+        }
+        if (!inputArray[1].matches("\\d+")) {
+            System.out.println("Illegal input pls try again");
+        }
+        if (!inputArray[2].matches("[NSEW]")) {
+            System.out.println("Illegal input pls try again");
+        }
+
+        int x = Integer.parseInt(inputArray[0]);
+        int y = Integer.parseInt(inputArray[1]);
+        Direction facing = switch (inputArray[2]) {
+            case "N" -> Direction.N;
+            case "E" -> Direction.E;
+            case "S" -> Direction.S;
+            case "W" -> Direction.W;
+            default -> throw new IllegalStateException("Unexpected value: " + inputArray[2]);
+        };
+
+
+        return new Position(x,y,facing);
     }
 
 }
