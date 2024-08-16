@@ -49,8 +49,8 @@ public class InputParser {
                     output.add(Direction.W);
                     break;
                 default:
-                    if (in.matches("\\d")) {
-                        output.add(in);
+                    if (in.matches("\\d+")) {
+                        output.add(Integer.valueOf(in));
                     }
             }
         }
