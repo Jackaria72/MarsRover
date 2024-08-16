@@ -3,7 +3,8 @@ package org.marsRover.input;
 import java.util.ArrayList;
 
 public class InputParser {
-    public ArrayList<Instruction> parser(String input) {
+
+    public ArrayList<Instruction> instructionParser(String input) {
         char[] inputArray = input.toUpperCase().toCharArray();
         ArrayList<Instruction> parsed = new ArrayList<>();
 // TODO: Does this need to parse int values for Plateau and Rover creation?

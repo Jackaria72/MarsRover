@@ -3,7 +3,6 @@ package org.marsRover.input;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,14 +18,14 @@ class InputParserTest {
         ArrayList<Instruction> expectedF = new ArrayList<>(List.of(Instruction.F));
         ArrayList<Instruction> expectedB = new ArrayList<>(List.of(Instruction.B));
         //Act
-        ArrayList<Instruction> testL = testParser.parser("L");
-        ArrayList<Instruction> testLLower = testParser.parser("l");
-        ArrayList<Instruction> testR = testParser.parser("R");
-        ArrayList<Instruction> testRLower = testParser.parser("r");
-        ArrayList<Instruction> testF = testParser.parser("F");
-        ArrayList<Instruction> testFLower = testParser.parser("f");
-        ArrayList<Instruction> testB = testParser.parser("B");
-        ArrayList<Instruction> testBLower = testParser.parser("b");
+        ArrayList<Instruction> testL = testParser.instructionParser("L");
+        ArrayList<Instruction> testLLower = testParser.instructionParser("l");
+        ArrayList<Instruction> testR = testParser.instructionParser("R");
+        ArrayList<Instruction> testRLower = testParser.instructionParser("r");
+        ArrayList<Instruction> testF = testParser.instructionParser("F");
+        ArrayList<Instruction> testFLower = testParser.instructionParser("f");
+        ArrayList<Instruction> testB = testParser.instructionParser("B");
+        ArrayList<Instruction> testBLower = testParser.instructionParser("b");
         // Assert
         assertAll(
                 () -> assertEquals(expectedL, testL),
@@ -48,9 +47,9 @@ class InputParserTest {
         ArrayList<Instruction> expected2 = new ArrayList<>(List.of(Instruction.L,Instruction.R, Instruction.R, Instruction.F));
         ArrayList<Instruction> expected3 = new ArrayList<>(List.of(Instruction.F, Instruction.R, Instruction.L, Instruction.L, Instruction.R));
         //Act
-        ArrayList<Instruction> test1 = testParser.parser("LLL");
-        ArrayList<Instruction> test2 = testParser.parser("LrRF");
-        ArrayList<Instruction> test3 = testParser.parser("FRlLr");
+        ArrayList<Instruction> test1 = testParser.instructionParser("LLL");
+        ArrayList<Instruction> test2 = testParser.instructionParser("LrRF");
+        ArrayList<Instruction> test3 = testParser.instructionParser("FRlLr");
 
         // Assert
         assertAll(
