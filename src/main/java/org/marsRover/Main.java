@@ -24,7 +24,7 @@ public class Main {
         InputParser test = new InputParser();
         String roverInit = "5 5 n";
 
-        Position out = test.initParser2(roverInit);
+        Position out = test.initParser(roverInit);
 
         Rover curiosity = new Rover(out);
 

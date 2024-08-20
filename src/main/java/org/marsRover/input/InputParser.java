@@ -7,7 +7,6 @@ public class InputParser {
     public ArrayList<Instruction> instructionParser(String input) {
         char[] inputArray = input.toUpperCase().toCharArray();
         ArrayList<Instruction> parsed = new ArrayList<>();
-// TODO: Does this need to parse int values for Plateau and Rover creation?
 
         for (char c : inputArray) {
             switch (c) {
@@ -31,12 +30,9 @@ public class InputParser {
     //INIT parser, Needs to take digits, use split to split by a regex?
     //Needs Direction for Rover, what kind of list could take both and be typesafe?
     //Also Needs to convert string input to int
-    //TODO: refactor this so it can output a position instead
 
-    public Position initParser2(String input) {
+    public Position initParser(String input) {
         ArrayList<Integer> num = new ArrayList<>();
-        //TODO: check if input list is longer than 3
-        //TODO: loop, see if 1st 2nd are Digits, set x, y accordingly, then 3rd is a directional letter, to set Direction
         String[] inputArray = input.toUpperCase().split(" ");
         if (inputArray.length != 3) {
             System.out.println("Incorrect number of commands supplied");
@@ -60,8 +56,6 @@ public class InputParser {
             case "W" -> Direction.W;
             default -> throw new IllegalStateException("Unexpected value: " + inputArray[2]);
         };
-
-
         return new Position(x,y,facing);
     }
 

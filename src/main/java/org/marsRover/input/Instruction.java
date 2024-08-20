@@ -5,5 +5,4 @@ public enum Instruction {
     R,
     F,
     B
-    //TODO: we could split M into F(orwards) and B(ackwards)?
 }

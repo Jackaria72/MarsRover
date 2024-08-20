@@ -79,15 +79,15 @@ class InputParserTest {
         Direction test3F = Direction.E;
 
 
-        Position result1 = testParser.initParser2(test1);
+        Position result1 = testParser.initParser(test1);
         int result1x = result1.getX();
         int result1y = result1.getY();
         Direction result1F = result1.getFacing();
-        Position result2 = testParser.initParser2(test2);
+        Position result2 = testParser.initParser(test2);
         int result2x = result2.getX();
         int result2y = result2.getY();
         Direction result2F = result2.getFacing();
-        Position result3 = testParser.initParser2(test3);
+        Position result3 = testParser.initParser(test3);
         int result3x = result3.getX();
         int result3y = result3.getY();
         Direction result3F = result3.getFacing();
@@ -108,34 +108,4 @@ class InputParserTest {
         );
     }
 
-
-
-
-//    @Test
-//    void testInitParseSingleIn() {
-//        InputParser testParser = new InputParser();
-//
-//        ArrayList<Object> expectedN = new ArrayList<>(List.of(Direction.N));
-//        ArrayList<Object> expectedE = new ArrayList<>(List.of(Direction.E));
-//        ArrayList<Object> expectedS = new ArrayList<>(List.of(Direction.S));
-//        ArrayList<Object> expectedW = new ArrayList<>(List.of(Direction.W));
-//        ArrayList<Object> expected1D = new ArrayList<>(List.of(2));
-//        ArrayList<Object> expected2D = new ArrayList<>(List.of(13));
-//
-//        ArrayList<Object> resultN = testParser.initParser("n");
-//        ArrayList<Object> resultS = testParser.initParser("S");
-//        ArrayList<Object> resultE = testParser.initParser("e");
-//        ArrayList<Object> resultW = testParser.initParser("W");
-//        ArrayList<Object> result1D = testParser.initParser("2");
-//        ArrayList<Object> result2D = testParser.initParser("13");
-//
-//        assertAll(
-//                () -> assertEquals(expectedN,resultN),
-//                () -> assertEquals(expectedE,resultE),
-//                () -> assertEquals(expectedS,resultS),
-//                () -> assertEquals(expectedW,resultW),
-//                () -> assertEquals(expected1D,result1D),
-//                () -> assertEquals(expected2D,result2D)
-//        );
-//    }
 }
