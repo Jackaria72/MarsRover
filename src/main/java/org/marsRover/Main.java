@@ -11,6 +11,8 @@ public class Main {
 
     TODO: add a method to pass parsed input Instructions to the Rover
             (loop through and call appropriate method)
+            currently MOVE methods do not SET a rover's position,
+            need to check it doesn't collide with anything before setting
 
     TODO: Implement separate parser to handle numeric inputs for Plat Init
 
