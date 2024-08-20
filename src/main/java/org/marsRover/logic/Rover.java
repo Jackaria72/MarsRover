@@ -4,6 +4,8 @@ import org.marsRover.input.Direction;
 import org.marsRover.input.Instruction;
 import org.marsRover.input.Position;
 
+import java.util.ArrayList;
+
 public class Rover {
     private Position currentPosition;
 
@@ -25,6 +27,17 @@ public class Rover {
     // we will need to iterate to get individual Instructions
     // Would use of a for loop with if-statements calling individual methods be better?
     //
+    public void instructionProcessor(ArrayList<Instruction> parsed) {
+        for (Instruction instruction : parsed) {
+            switch (instruction) {
+                case L -> rotateL(getCurrentPosition().getFacing());
+                case R -> rotateR(getCurrentPosition().getFacing());
+                case F -> moveFwd(getCurrentPosition().getFacing());
+                case B -> moveBkw(getCurrentPosition().getFacing());
+            }
+        }
+    }
+
 
     public void rotateL(Direction facing) {
         switch (facing) {
