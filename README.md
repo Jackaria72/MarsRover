@@ -12,3 +12,4 @@ A coding kata project for maneuverable Mars Rover simulation using Java and empl
 
 - [ ] Ensure 100% test coverage
 - [ ] Move movement logic into new "Mission Control" class
+- [ ] Considerations for a front end component
